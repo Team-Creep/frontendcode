@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+h2{
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+.title{
+    font-family: 'VT323', monospace;
+    padding: none;
+    margin: none;
+    // background-color: aquamarine;
+
+}
+
+.qr {
+    width:150px;
+    height: auto;
+    margin: auto;
+    
+}
+
+a {
+    float: left;
+    bottom: 0;
+    margin: 0px;
+}
+
+.avatar{
+    width:90px;
+    float: left;
+    height: auto;
+}
+
+section{
+    margin: auto;
+}
+
+.grid_container{
+    // background-color: blue;
+    width:600px;
+    height: 450px;
+    min-height: 400px;
+    min-width: 550px;
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "audrena grace"
+        "nebiyu sian";
+}
+
+.grid__child-one, .grid__child-two, .grid__child-three, .grid__child-four {
+    margin: auto;
+    display: inline-block;
+
+}
+
+
+.grid__child-one {
+    grid-area: audrena;
+    // background-color: yellow ;
+}
+.grid__child-two{
+    grid-area: grace;
+    // background-color: lightgreen;
+}
+.grid__child-three {
+    margin-top: -20px;
+    grid-area: nebiyu;
+    // background-color: lightsalmon;
+}
+.grid__child-four{
+    margin-top: -20px;
+    grid-area: sian;
+    // background-color: lightseagreen;
+}
+
+.audrena{
+    margin-top: 52px;
+    margin-right: -9px;
+}
+
+.grace {   
+    margin-top: 59px;
+    width: 72px;
+    margin-right: -4px;
+}
+
+.sian{
+    margin-right: -17px;
+    margin-top: 58px;
+}
+
+.nebiyu {
+    margin-right: -12px;
+    margin-top: 57px;
+}
+
+@keyframes jump {
+    from {top: 5px;}
+    to {top: 0px;}
+  }
+
+.audrena:hover, .grace:hover, .nebiyu:hover, .sian:hover{
+    position: relative;
+    animation: jump .5s infinite;
+
+}
+

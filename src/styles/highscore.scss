@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.highscore, h2{
+    font-family: 'VT323', monospace;
+    font-size: 80px;
+    text-align: center;
+    position: relative;
+}
+
+.block_holder {
+    background-color: rgba(245, 245, 245, 0.485);
+    width:500px;
+    height: 450px;
+    margin: auto;
+    margin-top: 80px;
+    border-radius: 10%;
+}
+
+iframe {
+    border: transparent;
+}
+
