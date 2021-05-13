@@ -5,6 +5,7 @@
     font-size: 80px;
     text-align: center;
     position: relative;
+    margin-bottom: -15px;
 }
 
 .block_holder {
@@ -20,3 +21,43 @@ iframe {
     border: transparent;
 }
 
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin: 0px auto;
+}
+
+h4 {
+    text-align: center;
+    display: block;
+    text-align-last: center;
+    font-family: 'VT323', monospace;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.playName, .playScore {
+    text-align-last: center;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+.playScore {
+    float: left;
+    animation: score_color 3s infinite;
+}
+  
+@keyframes score_color {
+    0% { color: rgb(185, 0, 0); }
+    25% { color: rgb(212, 106, 0); }
+    50% { color: rgb(0, 144, 31); }
+    75% { color: rgb(164, 0, 193); }
+    100% { color: rgb(185, 0, 0); }
+}
