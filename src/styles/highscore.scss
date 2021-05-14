@@ -1,8 +1,13 @@
+$red: #ae002e;
+$button-bg: $red;
+$button-text-color: #fff;
+$game-font: 'VT323', monospace; 
+
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 .highscore, h2{
-    font-family: 'VT323', monospace;
-    font-size: 80px;
+    font-family: $game-font;
+    font-size: 70px;
     text-align: center;
     position: relative;
     margin-bottom: -15px;
@@ -34,30 +39,149 @@ h4 {
     text-align: center;
     display: block;
     text-align-last: center;
-    font-family: 'VT323', monospace;
+    font-family: $game-font;
     font-size: 30px;
     margin-bottom: 0;
+    margin-top: 15px;
+}
+
+#ccmSpace{
+    margin-bottom: 40px;
+}
+
+#ccSpace{
+    margin-top: 40px;   
 }
 
 .playName, .playScore {
     text-align-last: center;
-    font-family: 'VT323', monospace;
+    font-family: $game-font;
     font-size: 22px;
     margin: 0px auto;
     display: flex;
     justify-content: center;
-
-}
-
-.playScore {
-    float: left;
     animation: score_color 3s infinite;
+    text-transform: uppercase;
+
 }
-  
+
+#button_wrap {
+    text-align: center;
+}
+
+
 @keyframes score_color {
     0% { color: rgb(185, 0, 0); }
     25% { color: rgb(212, 106, 0); }
     50% { color: rgb(0, 144, 31); }
     75% { color: rgb(164, 0, 193); }
     100% { color: rgb(185, 0, 0); }
+}
+
+
+// Bubbly button: https://codepen.io/nourabusoud/pen/ypZzMM
+.bubbly{
+  font-family: $game-font;
+  display: inline-block;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 7px 60px;
+  border:1px solid #d02718;
+  background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+  background-color:#c62d1f;
+  color: $button-text-color;
+  border-radius: 18px;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 3px 4px 0px 0px #f24437 100%;
+  text-shadow:0px 1px 0px #810e05;
+  
+  &:focus {
+    outline: 0;
+  }
+  
+  &:before, &:after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  }
+  
+  &:before{
+    display: none;
+    top: -75%;
+    background-image:  
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 20%, $button-bg 20%, transparent 30%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+
+  }
+  
+  &:after{
+    display: none;
+    bottom: -75%;
+    background-image:  
+    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  }
+ 
+  &:active{
+    transform: scale(0.9);
+    background-color: darken($button-bg, 5%);
+    box-shadow: 0 2px 25px rgba(255, 0, 0, 0.235);
+  }
+  
+  &.animate{
+    &:before{
+      display: block;
+      animation: top-bubbles ease-in-out 0.75s forwards;
+    }
+    &:after{
+      display: block;
+      animation: bottom-bubbles ease-in-out 0.75s forwards;
+    }
+  }
+}
+
+
+@keyframes top-bubbles {
+  0%{
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;}
+ 100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+
+@keyframes bottom-bubbles {
+  0%{
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;}
+ 100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
 }

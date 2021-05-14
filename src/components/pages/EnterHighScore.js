@@ -6,37 +6,27 @@ import "../../styles/highscore.scss"
 import "../../styles/hs_form.scss"
 
 function EnterHighScore(props) {
-  const [enterGame, setEnteredGame] = useState(props.enterGame || "");
-  const [playerName, setPlayerName] = useState(props.playerName || "");
-  const [enterScore, setEnteredScore] = useState(props.enterScore || 0);
+    const [enterGame, setEnterGame] = useState(0);
+    const [playerName, setPlayerName] = useState("");
+    const [enterScore, setEnterScore] = useState(0);
 
-  function formSubmit() {
-    props.addScore({
-      enterGame,
-      playerName,
-      enterScore
-    });
+    const formSubmit = async (e)=> {
+       await axios.patch(`https://creeptastic.herokuapp.com/api/v1/creep/${enterGame}`,{name: playerName, highscores: enterScore});       
+       console.log("Request success")
 
-    // const res = await axios.put('https://creeptastic.herokuapp.com/api/v1/creep/put', {name: '', highscore: ''} )
+       const animateButton = function(e) {  
+        e.target.classList.remove('animate');
+        e.target.classList.add('animate');
+        setTimeout(function(){
+          e.target.classList.remove('animate');
+        },700);
+      };
+      let bubblyButtons = document.getElementsByClassName("bubbly");
+      for (let i = 0; i < bubblyButtons.length; i++) {
+        bubblyButtons[i].addEventListener('click', animateButton, false);
+      }
 
-
-  }
-
-
-//   setNewHighScore = async (e) => { 
-//     e.preventDefault();
-//     const sendIt = 'https://creeptastic.herokuapp.com/api/v1/creep';
-//     try {
-//         await axios.put(`${sendIt}`, {name: this.state.name, highscore: this.state.highscore, gameplayed: this.state.gamename }); 
-//     } catch(error){
-//         console.log(error);
-
-//     }
-// }
-
-
-
-
+       }
 
   return (
     <div className="targetSlides"> 
@@ -48,30 +38,37 @@ function EnterHighScore(props) {
 
                 <div className="gameFormImpOne">
                 <label for="gamePlay">Which game did you play: </label>
-                    <select name="gamePlay" value={enterGame} form="EnterHighScore" onChange={e => {setEnteredGame(e.target.value);}} required> 
-                    <option value="" disabled selected>Pick a Game</option>
-                    <option value="creepcraft">Creepcraft</option>
-                    <option value="creepinvaders">Creep Invaders</option>
-                    <option value="creepcrazemaze">Creep Craze Maze</option>
+                    <select name="gamePlay" value={enterGame} form="EnterHighScore" onChange={e => {setEnterGame(e.target.value);
+                    console.log("ENTERED", enterGame)
+                    }} required> 
+                    
+                    <option value="0" disabled selected>Pick a Game</option>
+                    <option value="6">Creepcraft</option>
+                    <option value="5">Creep Invaders</option>
+                    <option value="7">Creep Craze Maze</option>
                     </select>
                 </div>
 
                 <div className="gameFormImpTwo">
                     <label for="playName">Enter your name (Up to 10 letters): </label>
-                        <input name="playName" value={playerName} form="EnterHighScore" maxLength="10" onChange={e => {setPlayerName(e.target.value);}}
+                        <input name="playName" value={playerName} form="EnterHighScore" maxLength="10" onChange={e => {setPlayerName(e.target.value)
+                        console.log("NAME", playerName)
+                        ;}}
                         type="text" required> 
                         </input>
                 </div>
 
                 <div className="gameFormImpThree">
                     <label for="scoreNumb">Enter your high score: </label>
-                        <input name="scoreNumb" value={enterScore} form="EnterHighScore" onChange={e => {setEnteredScore(e.target.value);}}
+                        <input name="scoreNumb" value={enterScore} form="EnterHighScore" onChange={e => {setEnterScore(e.target.value)
+                        console.log("SCORE", enterScore)
+                        ;}}
                         type="text" required> 
                         </input>
                 </div>
 
-                {/* //submit button       */}
-                <button onClick={formSubmit} className="button" type="button">Submit</button>
+                {/* SUBMIT */}
+                <button onClick={formSubmit} className="bubbly" type="button">Submit</button>
                 </div>
             </form>
             </div>

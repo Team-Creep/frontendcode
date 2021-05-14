@@ -18,8 +18,9 @@ export default function Presentation() {
           <h3>{content}</h3>
         </div>
       ));
-  return (
-    <div>
+      return (
+        <div>
+      <div id="animatedBackground"></div>
         <PresHeader />
         <div className="slideParent">
             <Slider className="targetSlides" dots={true}>{renderSlides()}</Slider>
