@@ -11,21 +11,30 @@ function EnterHighScore(props) {
     const [enterScore, setEnterScore] = useState(0);
 
     const formSubmit = async (e)=> {
+        const animateButton = function(e) {  
+         e.target.classList.remove('animate');
+         e.target.classList.add('animate');
+         setTimeout(function(){
+           e.target.classList.remove('animate');
+         },700);
+       };
+
+       let bubblyButtons = document.getElementsByClassName("bubbly");
+       for (let i = 0; i < bubblyButtons.length; i++) {
+         bubblyButtons[i].addEventListener('click', animateButton, false);
+       }
+
+       let prevScore = await axios.get(`https://creeptastic.herokuapp.com/api/v1/creep/${enterGame}`)
+
+       console.log("new vs", typeof(prevScore.data.highscores), typeof(Number(enterScore)))
+
+    if (prevScore.data.highscores < Number(enterScore)) {
+        console.log("True")
        await axios.patch(`https://creeptastic.herokuapp.com/api/v1/creep/${enterGame}`,{name: playerName, highscores: enterScore});       
-       console.log("Request success")
-
-       const animateButton = function(e) {  
-        e.target.classList.remove('animate');
-        e.target.classList.add('animate');
-        setTimeout(function(){
-          e.target.classList.remove('animate');
-        },700);
-      };
-      let bubblyButtons = document.getElementsByClassName("bubbly");
-      for (let i = 0; i < bubblyButtons.length; i++) {
-        bubblyButtons[i].addEventListener('click', animateButton, false);
-      }
-
+       console.log("Request success")  
+    } else {
+        alert(`Not quite! You need to beat ${prevScore.data.highscores} to make the high score board`)
+    }
        }
 
   return (

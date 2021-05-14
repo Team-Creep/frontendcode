@@ -56,7 +56,7 @@ h4 {
 .playName, .playScore {
     text-align-last: center;
     font-family: $game-font;
-    font-size: 22px;
+    font-size: 24px;
     margin: 0px auto;
     display: flex;
     justify-content: center;
@@ -65,10 +65,13 @@ h4 {
 
 }
 
+.playName {
+    text-align: right;
+}
+
 #button_wrap {
     text-align: center;
 }
-
 
 @keyframes score_color {
     0% { color: rgb(185, 0, 0); }
