@@ -8,15 +8,12 @@ h2{
     font-family: 'VT323', monospace;
     padding: none;
     margin: none;
-    // background-color: aquamarine;
-
 }
 
 .qr {
     width:150px;
     height: auto;
     margin: auto;
-    
 }
 
 a {
@@ -36,7 +33,6 @@ section{
 }
 
 .grid_container{
-    // background-color: blue;
     width:600px;
     height: 450px;
     min-height: 400px;
@@ -53,27 +49,21 @@ section{
 .grid__child-one, .grid__child-two, .grid__child-three, .grid__child-four {
     margin: auto;
     display: inline-block;
-
 }
-
 
 .grid__child-one {
     grid-area: audrena;
-    // background-color: yellow ;
 }
 .grid__child-two{
     grid-area: grace;
-    // background-color: lightgreen;
 }
 .grid__child-three {
     margin-top: -20px;
     grid-area: nebiyu;
-    // background-color: lightsalmon;
 }
 .grid__child-four{
     margin-top: -20px;
     grid-area: sian;
-    // background-color: lightseagreen;
 }
 
 .audrena{
@@ -105,6 +95,5 @@ section{
 .audrena:hover, .grace:hover, .nebiyu:hover, .sian:hover{
     position: relative;
     animation: jump .5s infinite;
-
 }
 
